@@ -48,6 +48,14 @@
   .footer.dark .footer-left a:hover {
     color: purple;
   }
+
+  .footer.light .footer-left a {
+    color: purple;
+  }
+
+  .footer.light .footer-left a:hover {
+    color: rebeccapurple;
+  }
   
   .footer.light .git-link {
     color: purple;
