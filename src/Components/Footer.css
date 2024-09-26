@@ -50,15 +50,19 @@
   }
 
   .footer.light .footer-left a {
-    color: purple;
+    color: #3d89e8;
   }
 
   .footer.light .footer-left a:hover {
-    color: rebeccapurple;
+    color: #224c7f;
+  }
+
+  .footer.light .git-link:hover {
+    color: #224c7f;
   }
   
   .footer.light .git-link {
-    color: purple;
+    color: #3d89e8;
   }
 
   .footer-left h2{

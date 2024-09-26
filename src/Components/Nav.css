@@ -1,8 +1,8 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    background-color: #9c86df; 
-    box-shadow: 1px 0px 0px 10px #9c86df;
+    background-color: #3d89e8; 
+    box-shadow: 1px 0px 0px 10px #3d89e8;
     padding-top: 15px;
   }
   
@@ -17,7 +17,7 @@
   .nav-left img{
     width: 35px;
     height: 35px;
-    margin-right: 05px;
+    margin-right: 5px;
     cursor: pointer; 
   }
 
@@ -68,7 +68,7 @@
   }
   
   body.light-mode .nav {
-    background-color: #9c86df;
+    background-color: #3d89e8;
   }
   
   body.light-mode .logo {

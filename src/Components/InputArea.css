@@ -1,16 +1,34 @@
 .input-container {
     text-align: center;
     margin: 20px;
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+    height: 100%;
   }
   
   .input-container.light textarea {
     background-color: #ffffff;
     color: #000000;
-    border: 2px solid #9c86df;
+    border: 2px solid #3d89e8;
   }
   
   .input-container.light h2 {
     color: #000000;
+    padding: 20px 0px;
+  }
+
+  .input-container:focus-within h2 {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+  .input-container.light button{
+    background-color: #3d89e8;
+  }
+
+  .input-container.light button:hover{
+    background-color: #224c7f;
   }
   
   .input-container.dark textarea {
@@ -18,6 +36,8 @@
     color: #ffffff;
     border: 2px solid rebeccapurple;
   }
+
+
 
   .input-container.dark textarea:focus {
     border-color: purple;
@@ -31,16 +51,52 @@
     width: 50vw;
     height: 35vh;
     padding: 10px;
-    margin: 10px 0;
+    margin: 0px 0;
     font-size: 16px;
     border-radius: 15px;
     border-color: rebeccapurple; 
+    box-shadow: 0px 0px 100px 1px rebeccapurple;
+  }
 
+  .input-container.light textarea{
+    box-shadow: 0px 0px 100px 1px #3d89e8;
+
+  }
+
+  .new{
+    position: absolute;
+    margin-top: 2px;
+    width:15px;
+  }
+
+
+  .opentab{
+    padding-right: 30px;
+    margin-left: 5px;
+  }
+  
+  
+  .buttons{
+    margin-top: 20px;
+  }
+  .alert {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+
+  .input-container h2{
+    margin-bottom: 30px;
+    margin-top: 50px;
+    font-size: 30px;
   }
 
   textarea:focus {
     border-color: purple; 
     outline: none; 
+    box-shadow: 0px 0px 100px 1px purple;
+
   }
   .encryptButton {
     margin: 10px 0;
@@ -119,4 +175,91 @@
     color: #ffffff;
   }
 
-  
+
+.input-container::before, .input-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: -1; /* Ensure the background is behind the content */
+}
+
+  /* First Layer of Cryptographic Lines */
+.input-container::before {
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 50px
+    );
+    animation: animateLines 30s linear infinite;
+}
+
+/* Second Layer of Cryptographic Lines */
+.input-container::after {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 50px
+    );
+    animation: animateLines 30s linear infinite;
+    
+}
+
+@keyframes animateLines {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(-500px) translateX(-500px);
+    }
+}
+
+
+/* New grid lines shooting up and down when textarea is focused */
+textarea:focus ~ .lines-shoot-up {
+    display: block;
+    animation: shootUp 1s ease forwards;
+}
+
+textarea ~ .lines-shoot-up {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        purple,
+        purple 2px,
+        transparent 2px,
+        transparent 30px
+    ), repeating-linear-gradient(
+        90deg,
+        purple,
+        purple 2px,
+        transparent 2px,
+        transparent 30px
+    );
+    z-index: -1;
+    display: none;
+}
+
+
+
+@keyframes shootUp {
+    0% {
+        transform: translateY(100%) translateX(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+}

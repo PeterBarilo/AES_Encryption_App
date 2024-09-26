@@ -5,17 +5,24 @@ import { assets } from '../assets/assets';
 
 const InputArea = ({ isDarkMode }) => {
   const [text, setText] = useState('');
-  const [encryptedData, setEncryptedData] = useState(null); 
-  const [decryptedText, setDecryptedText] = useState(null); 
+  const [encryptedData, setEncryptedData] = useState(null);
+  const [decryptedText, setDecryptedText] = useState(null);
+  const [showAlert, setShowAlert] = useState(false); // State for custom alert
+
 
   const handleTextChange = (e) => {
     setText(e.target.value);
+    setShowAlert(false); 
   };
-
   const handleEncrypt = async () => {
+    if (!text.trim()) {  
+      setShowAlert(true); 
+      return;
+    }
+
     try {
       const response = await axios.post('http://localhost:5000/encrypt', { message: text });
-      setEncryptedData(response.data); 
+      setEncryptedData(response.data);
     } catch (error) {
       console.error('Error encrypting message:', error);
     }
@@ -25,7 +32,7 @@ const InputArea = ({ isDarkMode }) => {
     if (encryptedData) {
       try {
         const response = await axios.post('http://localhost:5000/decrypt', encryptedData);
-        setDecryptedText(response.data.plaintext); 
+        setDecryptedText(response.data.plaintext);
       } catch (error) {
         console.error('Error decrypting message:', error);
       }
@@ -42,13 +49,13 @@ const InputArea = ({ isDarkMode }) => {
 
       const blob = new Blob([fileContent], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
-      
+
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'encrypted_data.txt'; 
+      a.download = 'encrypted_data.txt';
       document.body.appendChild(a);
       a.click();
-      
+
       URL.revokeObjectURL(url);
       document.body.removeChild(a);
     }
@@ -73,32 +80,29 @@ const InputArea = ({ isDarkMode }) => {
         value={text}
         onChange={handleTextChange}
       />
-      <div className='encryptButton'>
+      <div className="lines-shoot-up"></div>
+      {showAlert && <p className="alert">Please enter text to encrypt.</p>} 
+      <div className="encryptButton">
         <button onClick={handleEncrypt}>Encrypt Text</button>
       </div>
 
       {encryptedData && (
-        <div className='encrypted-data'>
+        <div className="encrypted-data">
           <h3>Encrypted Data:</h3>
-          <div className='data'>
-            <div className='ciphertext'>
-              <p><strong>Ciphertext:</strong> {encryptedData.ciphertext.slice(0, 10)}...</p>
-              <button  className='open-btn' onClick={handleOpenInNewTab}>Open Full Ciphertext <img src={assets.new_light} alt="" /> </button>
-              
-            </div>
-            <p>Nonce: {encryptedData.nonce}</p>
-            <p>Tag: {encryptedData.tag}</p>
+          <p><strong>Ciphertext:</strong> {encryptedData.ciphertext.slice(0, 10)}...<button className='opentab' onClick={handleOpenInNewTab}>Open Full Ciphertext<img className='new'src={assets.new_light} alt="" /></button> </p>
+          
+          <p>Nonce: {encryptedData.nonce}</p>
+          <p>Tag: {encryptedData.tag}</p>
+          <div className='buttons'>
+            <button onClick={handleDecrypt}>Decrypt Text</button>
+            <button className="download-btn" onClick={handleDownload}>Download as .txt</button>
           </div>
           
-
-
-          <button onClick={handleDecrypt}>Decrypt Text</button>
-          <button className='download-btn' onClick={handleDownload}>Download as .txt</button>
         </div>
       )}
 
       {decryptedText && (
-        <div className='decrypted-text'>
+        <div className="decrypted-text">
           <h3>Decrypted Text:</h3>
           <p>{decryptedText}</p>
         </div>
