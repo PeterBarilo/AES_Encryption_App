@@ -5,30 +5,27 @@ import { assets } from '../assets/assets';
 
 const InputArea = ({ isDarkMode }) => {
   const [text, setText] = useState('');
-  const [encryptedData, setEncryptedData] = useState(null); // Store encrypted data
-  const [decryptedText, setDecryptedText] = useState(null); // Store decrypted text
+  const [encryptedData, setEncryptedData] = useState(null); 
+  const [decryptedText, setDecryptedText] = useState(null); 
 
-  // Handle text input change
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
 
-  // Send the text to the backend for encryption
   const handleEncrypt = async () => {
     try {
       const response = await axios.post('http://localhost:5000/encrypt', { message: text });
-      setEncryptedData(response.data); // Store encrypted data
+      setEncryptedData(response.data); 
     } catch (error) {
       console.error('Error encrypting message:', error);
     }
   };
 
-  // Decrypt the data
   const handleDecrypt = async () => {
     if (encryptedData) {
       try {
         const response = await axios.post('http://localhost:5000/decrypt', encryptedData);
-        setDecryptedText(response.data.plaintext); // Store decrypted text
+        setDecryptedText(response.data.plaintext); 
       } catch (error) {
         console.error('Error decrypting message:', error);
       }
@@ -46,14 +43,12 @@ const InputArea = ({ isDarkMode }) => {
       const blob = new Blob([fileContent], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       
-      // Create a temporary link element
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'encrypted_data.txt'; // The filename
+      a.download = 'encrypted_data.txt'; 
       document.body.appendChild(a);
       a.click();
       
-      // Clean up the URL and remove the temporary link
       URL.revokeObjectURL(url);
       document.body.removeChild(a);
     }
@@ -82,7 +77,6 @@ const InputArea = ({ isDarkMode }) => {
         <button onClick={handleEncrypt}>Encrypt Text</button>
       </div>
 
-      {/* Show encrypted data if available */}
       {encryptedData && (
         <div className='encrypted-data'>
           <h3>Encrypted Data:</h3>

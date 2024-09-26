@@ -7,7 +7,6 @@ const Nav = ({ isDarkMode, toggleDarkMode }) => {
     <div className='nav'>
       <h2 className="logo">AES Encrypt Online</h2>
       <div className='nav-right'>
-        {/* Icon switch based on dark mode state */}
         <img
           src={isDarkMode ? assets.light : assets.dark}
           alt="Toggle Dark Mode"
