@@ -1,13 +1,12 @@
-/* Footer Styling */
 .footer {
-    width: 100vw; /* Span the entire viewport width */
-    background-color: aquamarine; /* Dark background color */
-    color: #ffffff; /* Ensure text is white */
-    padding: 20px 0; /* Padding for spacing inside the footer */
-    text-align: center; /* Center the text inside */
+    width: 100vw; 
+    background-color: aquamarine; 
+    color: #ffffff; 
+    padding: 20px 0; 
+    text-align: center; 
     position: relative;
-    left: 50%; /* Adjust the footer positioning */
-    transform: translateX(-50%); /* Center the footer properly */
+    left: 50%; 
+    transform: translateX(-50%);
   }
 
   .text{
@@ -15,8 +14,8 @@
   }
   
   .footer-left {
-    max-width: 100%; /* Ensure content spans the entire width */
-    margin: 0 auto; /* Center the content */
+    max-width: 100%;
+    margin: 0 auto; 
   }
   
   .footer h2 {
@@ -26,12 +25,12 @@
   }
   
   .git-link {
-    color: black; /* Link color */
+    color: black;
     text-decoration: none;
     font-size: 16px;
   }
   
   .git-link:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline; 
   }
   
