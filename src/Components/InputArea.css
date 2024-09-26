@@ -1,51 +1,122 @@
 .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    padding: 20px;
-  }
-  
-  .input-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
     text-align: center;
+    margin: 20px;
   }
   
-  .input-container textarea {
-    width: 90%;
-    max-width: 800px;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
+  .input-container.light textarea {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #9c86df;
+  }
+  
+  .input-container.light h2 {
+    color: #000000;
+  }
+  
+  .input-container.dark textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 2px solid rebeccapurple;
+  }
+
+  .input-container.dark textarea:focus {
+    border-color: purple;
+  }
+  
+  .input-container.dark h2 {
+    color: #ffffff;
+  }
+  
+  textarea {
+    width: 50vw;
+    height: 35vh;
+    padding: 10px;
+    margin: 10px 0;
     font-size: 16px;
-    resize: none;
-    transition: border-color 0.3s;
+    border-radius: 15px;
+    border-color: rebeccapurple; 
+
   }
-  
-  .input-container textarea:focus {
-    border-color: #00bfa6;
-    outline: none;
+
+  textarea:focus {
+    border-color: purple; 
+    outline: none; 
   }
-  
   .encryptButton {
+    margin: 10px 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #9c86df;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #7e60da;
+  }
+  
+  .input-container.dark button {
+    background-color: rebeccapurple;
+  }
+
+  .input-container.dark button:hover {
+    background-color: purple;
+  }
+  
+  .download-btn {
+    margin-left: 10px;
+  }
+
+  .ciphertext{
+    margin: 15px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .ciphertext p{
+    margin-top: 5px;
+  }
+
+  .ciphertext img{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: -7px;
+  }
+
+  .data{
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+  .encrypted-data h3{
+    margin-bottom: 10px;
+  }
+
+  .open-btn{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 10px;
+    padding: 7px 16px;
+  }
+  
+  .encrypted-data, .decrypted-text {
     margin-top: 20px;
   }
   
-  .encryptButton button {
-    padding: 10px 20px;
+  .encrypted-data p, .decrypted-text p {
     font-size: 18px;
-    background-color: #00bfa6;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    margin-bottom: 5px;
+    color: #333;
   }
   
-  .encryptButton button:hover {
-    background-color: #008f82;
+  .input-container.dark .encrypted-data p, 
+  .input-container.dark .decrypted-text p {
+    color: #ffffff;
   }
+
   
