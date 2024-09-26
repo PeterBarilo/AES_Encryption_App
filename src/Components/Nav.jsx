@@ -5,7 +5,11 @@ import { assets } from '../assets/assets';
 const Nav = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <div className='nav'>
-      <h2 className="logo">AES Encrypt Online</h2>
+      <div className="nav-left">
+        <img className='imglogo' src={assets.logo} alt="" />
+        <h2 className="logo">AES Encrypt Online</h2>
+      </div>
+      
       <div className='nav-right'>
         <img
           src={isDarkMode ? assets.light : assets.dark}
