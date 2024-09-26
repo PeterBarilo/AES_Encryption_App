@@ -1,0 +1,10 @@
+.logo{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 500;
+    background-color: aquamarine;
+    box-shadow: 1px 1px 1px 1px aquamarine;
+}
