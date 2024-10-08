@@ -239,13 +239,13 @@ textarea ~ .lines-shoot-up {
         purple,
         purple 2px,
         transparent 2px,
-        transparent 30px
+        transparent 50px
     ), repeating-linear-gradient(
         90deg,
         purple,
         purple 2px,
         transparent 2px,
-        transparent 30px
+        transparent 50px
     );
     z-index: -1;
     display: none;
